@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: lab_postgres
+    environment:
+      POSTGRES_DB: analyticsdb
+      POSTGRES_USER: appuser
+      POSTGRES_PASSWORD: Sup3rS3cr3tPwd!
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U appuser -d analyticsdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - lab_net
+
+  api:
+    build: ./api
+    container_name: lab_api
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://appuser:Sup3rS3cr3tPwd!@db:5432/analyticsdb
+      APP_ENV: production
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - lab_net
+
+networks:
+  lab_net:
+    driver: bridge
