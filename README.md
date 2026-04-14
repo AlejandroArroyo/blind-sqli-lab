@@ -14,8 +14,6 @@
 ## ⚠️ Aviso Legal / Legal Notice
 
 > **Este laboratorio es exclusivamente educativo.** Todo el código vulnerable está diseñado para ejecutarse en un entorno local aislado mediante Docker. No utilices estas técnicas contra sistemas sin autorización explícita por escrito. El autor no se hace responsable del uso indebido.
->
-> **This lab is for educational purposes only.** Do not use these techniques against systems you do not own or have explicit written permission to test.
 
 ---
 
@@ -225,13 +223,3 @@ Un WAF puede ser una capa adicional, nunca la defensa primaria. El atacante solo
 - **ORDER BY Injection** — vector frecuentemente ignorado en revisiones de código
 - **WAF bypass** — por qué los filtros regex son insuficientes
 - **Defense in Depth** — múltiples capas de validación independientes
-
----
-
-## 🤝 Contribuciones
-
-Las contribuciones son bienvenidas. Abre un issue o pull request para:
-- Añadir más variantes de payloads
-- Implementar una versión con Boolean-Based Blind SQLi
-- Añadir un segundo lab con un ORM diferente (Tortoise, Databases)
-- Mejorar el script de exploit con binary search para mayor velocidad
